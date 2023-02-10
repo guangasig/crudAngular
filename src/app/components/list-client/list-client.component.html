@@ -1,0 +1,34 @@
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">
+            Clientes
+        </h2>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-primary">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Correo Electronico</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="" *ngFor="let empleado of empleados; let eIndex = index">
+                        <td scope="row">{{ empleado.id }}</td>
+                        <td>{{ empleado.name }}</td>
+                        <td>{{ empleado.email }}</td>
+                        <td>
+                            <a routerLink="/edit-client/1" routerLinkActive="router-link-active" >Editar</a> | Borrar
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer">
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+<nav class="navbar navbar-expand navbar-light bg-light">
+    <div class="nav navbar-nav" *ngIf="ismenurequired">
+        <a class="nav-item nav-link active" href="#" aria-current="page">Sistema <span class="visually-hidden">(current)</span></a>
+        <a class="nav-item nav-link" routerLink="/list-clients" routerLinkActive="router-link-active">Clientes</a>
+        <a class="nav-item nav-link" routerLink="/add-client" routerLinkActive="router-link-active">Agrgar Clientes</a>
+    </div>
+</nav>
+<div class="continer">
+    <router-outlet></router-outlet>
+</div>
