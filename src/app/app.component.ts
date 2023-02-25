@@ -6,8 +6,10 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent implements DoCheck  {
-  title = 'crudangular';
+  
+  title = 'My School';
   ismenurequired = false;
   constructor( private router: Router) { }
 
@@ -20,4 +22,5 @@ export class AppComponent implements DoCheck  {
     }
   }
 
+  collapsed:boolean=false
 }

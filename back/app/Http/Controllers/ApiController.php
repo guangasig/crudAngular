@@ -23,6 +23,7 @@ class ApiController extends Controller
 
     public function login(Request $request)
     {
+        // dd('login');
         $credentilas = $request->validate([
             'email' => 'required|email',
             'password' => 'required|min:6',
