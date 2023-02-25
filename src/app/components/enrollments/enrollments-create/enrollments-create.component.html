@@ -1,0 +1,59 @@
+<div class="container pt-5">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <form (ngSubmit)="addEnrollment" [formGroup]="addEnrollmentForm" #from="ngForm">
+                <div class="card-header">
+                    Matricularme 
+                </div>
+                <div class="card-body">
+
+                    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+                        <li [ngbNavItem]="1">
+                            <a ngbNavLink>Básica Superior</a>
+                            <ng-template ngbNavContent>
+                                <label for="nivel" class="form-label">Selecciona tu nivel</label>
+                                <div class="d-flex">
+                                    <div *ngFor="let item of cursos" class="pe-1">
+                                        <div *ngIf="item.subNivel=='Basica_Superior'">
+                                            <input type="checkbox" class="btn-check" id="btn-check-1-outlined"  [value]="item.value" (click)="selectCurso($event)" checked autocomplete="off"/>
+                                            <label class="btn btn-outline-secondary" for="btn-check-1-outlined">
+                                                {{ item.text }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </li>
+                        <li [ngbNavItem]="2">
+                            <a ngbNavLink>Bachillerato</a>
+                            <ng-template ngbNavContent>
+                                <label for="nivel" class="form-label">Selecciona tu nivel</label>
+                                <div class="d-flex">
+                                    <div *ngFor="let item of cursos" class="pe-1">
+                                        <div *ngIf="item.subNivel=='Bachillerato'">
+                                            <input type="checkbox" class="btn-check" id="btn-check-2-outlined"  [value]="item.value" (click)="selectCurso($event)" checked autocomplete="off"/>
+                                            <label class="btn btn-outline-secondary" for="btn-check-2-outlined">
+                                                {{ item.text }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </li>
+                    </ul>
+                    <div [ngbNavOutlet]="nav" class="mt-2"></div>
+                    
+                </div>
+                <div class="card-footer text-muted">
+                    <div class="btn-group" role="group" aria-label="Button group name">
+                        <button type="submit" class="btn btn-success">Agregar</button>
+                        <button type="button" class="btn btn-primary">Cancelar</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+            {{ matricula | json }}
+        </div>
+    </div>
+</div>

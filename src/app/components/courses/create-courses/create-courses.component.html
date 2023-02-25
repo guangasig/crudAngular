@@ -1,0 +1,46 @@
+<div class="container pt-5">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <form (ngSubmit)="addCourses" class="needs-validation" [ngClass]="wasValidated" novalidate>
+                    <div class="card-header">
+                        Crear Cursos 
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="nombre">Nombre del Curso</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" [formControl]="nombreCtrl" placeholder="Ej. Matemáticas" autofocus="autofocus" minlength="5" required/>
+                            <div class="invalid-feedback" *ngIf="nombreCtrl.errors && descripcionCtrl.dirty">
+                                <span *ngIf="nombreCtrl.hasError('minlength')">
+                                    El campo Nombre debe tener como mínimo 5 carácteres
+                                </span>
+                                <span *ngIf="nombreCtrl.hasError('required')">
+                                    El campo Nombre es requerido
+                                </span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nombre">Descripción</label>
+                            <input type="text" class="form-control" id="descripcion" name="descripcion" [formControl]="descripcionCtrl" placeholder="Ej. En este curso aprenderas algebra" minlength="5" required/>
+                            <div class="invalid-feedback" *ngIf="descripcionCtrl.errors && descripcionCtrl.dirty">
+                                <span *ngIf="descripcionCtrl.hasError('minlength')">
+                                    El campo Descripción debe tener como mínimo 5 carácteres
+                                </span>
+                                <span *ngIf="descripcionCtrl.hasError('required')">
+                                    El campo Descripción es requerido
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <div class="btn-group" role="group" aria-label="Button group name">
+                            <button type="button" class="btn btn-success" (click)="addCourses($event)">Agregar</button>
+                            <button type="button" class="btn btn-primary">Cancelar</button>
+                        </div>
+                    </div>
+                </form>
+                {{ curso | json }}
+            </div>
+        </div>
+    </div>
+</div>
