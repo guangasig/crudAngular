@@ -28,6 +28,8 @@ import { ViewNotesComponent } from './components/notes/view-notes/view-notes.com
 import { ViewProfileComponent } from './components/profile/view-profile/view-profile.component';
 import { EditProfileComponent } from './components/profile/edit-profile/edit-profile.component';
 import { EditPasswordComponent } from './components/profile/edit-password/edit-password.component';
+import { SecurityModule } from './aplication/security/security.module';
+import { PortalWebComponent } from './aplication/portal-web/portal-web.component';
 
 
 @NgModule({
@@ -49,6 +51,7 @@ import { EditPasswordComponent } from './components/profile/edit-password/edit-p
     ViewProfileComponent,
     EditProfileComponent,
     EditPasswordComponent,
+    PortalWebComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,7 +63,8 @@ import { EditPasswordComponent } from './components/profile/edit-password/edit-p
     BrowserAnimationsModule,
     NgbNavModule,
     NgbModule,
-    NgbDropdownModule
+    NgbDropdownModule,
+    SecurityModule
   ],
   providers: [],
   bootstrap: [AppComponent]
