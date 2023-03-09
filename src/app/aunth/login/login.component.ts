@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr'
 
 @Component({
@@ -26,16 +26,19 @@ export class LoginComponent {
 
       this.service.login(this.loginform.value).subscribe(response => {
         
+        console.log('response',response);
+
         this.loginData = response
         if (this.loginData.status) {
           sessionStorage.setItem('token', this.loginData.token);
           sessionStorage.setItem('user', JSON.stringify(this.loginData.user));
           console.log(sessionStorage.getItem('user'));
           console.log(sessionStorage.getItem('token'));
-          this.router.navigate(['/']);
+          this.router.navigate(['home']);
         }else{
-          this.toastr.error(this.loginData.msg);
+          this.toastr.error('hola',this.loginData.msg);
         }
+
       })
 
     }else{

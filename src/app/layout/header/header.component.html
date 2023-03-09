@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-color" *ngIf="ismenurequired">
+    <div class="container-fluid">
+        <a class="nav-item nav-link active text-logo" href="#" aria-current="page">MY SCHOOL <span class="visually-hidden pr-2">(current)</span></a>
+        <button class="navbar-toggler" type="button" aria-controls="navbarContent"
+			[attr.aria-expanded]="!collapsed"
+			aria-label="Toggle navigation" (click)="collapsed = !collapsed">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse items-computer ml-2" [class.collapse]="collapsed" id="navbarContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                <li class="nav-item" ngbDropdown>
+					<a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown1" role="button" routerLinkActive="active"> Estudiantes </a>
+					<div ngbDropdownMenu aria-labelledby="navbarDropdown1" class="dropdown-menu">
+						<a ngbDropdownItem [routerLink]="['profile']" routerLinkActive="active"  (click)="$event.preventDefault()">Mi Perfil</a>
+						<a ngbDropdownItem [routerLink]="['view-notes',1]" routerLinkActive="active" (click)="$event.preventDefault()">Calificaciones</a>
+						<a ngbDropdownItem routerLink="create-enrollment" routerLinkActive="active" (click)="$event.preventDefault()">Matricula</a>
+					</div>
+				</li>
+
+                <li class="nav-item" ngbDropdown>
+					<a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown2" role="button"> Admin </a>
+					<div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu">
+						<a ngbDropdownItem href="#" (click)="$event.preventDefault()">Carreras</a>
+						<a ngbDropdownItem href="#" (click)="$event.preventDefault()">Cursos</a>
+						<a ngbDropdownItem href="#" (click)="$event.preventDefault()">Estudiantes</a>
+						<a ngbDropdownItem href="#" (click)="$event.preventDefault()">Matriculas</a>
+						<a ngbDropdownItem href="#" (click)="$event.preventDefault()">Períodos Acedémico</a>
+					</div>
+				</li>
+
+                <li class="nav-item" ngbDropdown>
+					<a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown3" role="button"> Configuraciones </a>
+					<div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
+						<a ngbDropdownItem href="#" (click)="$event.preventDefault()">Usuarios</a>
+						<a ngbDropdownItem href="#" (click)="$event.preventDefault()">Roles</a>
+						<a ngbDropdownItem href="#" (click)="$event.preventDefault()">Permisos</a>
+					</div>
+				</li>
+
+				<li class="nav-item logout-sm pt-1">
+					<button type="button" class="btn btn-success btn-sm">Cerrar Sesión</button>
+				</li>
+
+            </ul>
+        </div>
+        <button type="button" class="btn btn-success logout">Cerrar Sesión</button>
+    </div>
+</nav>

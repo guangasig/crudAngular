@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { retry, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -48,8 +50,12 @@ export class AuthService {
      * @returns user data
      */
     login(data:any){
-      return this.http.post(`${this.apiUrl}/login`,data);
+      let res = this.http.post(`${this.apiUrl}/login`,data)
+      .pipe(catchError(this.handleError));
+      console.log('res1',res);
+      return res;
     }
+
     /**
      * get users data
      * @returns 
@@ -88,4 +94,11 @@ export class AuthService {
       this.options.headers.Authorization = 'Bearer ' + localStorage.getItem('access_token');
       return this.http.get(this.apiUrl + '/token/revoke', this.options);
     }
+
+    handleError(error: HttpErrorResponse) {
+      console.log('error =>');
+      console.log(error.message);
+      return throwError(error);
+    }
+
 }

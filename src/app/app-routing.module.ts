@@ -1,52 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddClientComponent } from './components/add-client/add-client.component';
-import { EditClientComponent } from './components/edit-client/edit-client.component';
-import { ListClientComponent } from './components/list-client/list-client.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthGuardService } from './services/auth-guard.service';
-import { ListStudentsComponent } from './components/students/list-students/list-students.component';
-import { EnrollmentsCreateComponent } from './components/enrollments/enrollments-create/enrollments-create.component';
-import { ViewNotesComponent } from './components/notes/view-notes/view-notes.component';
-import { CreateCoursesComponent } from './components/courses/create-courses/create-courses.component';
-//Profile
-import { ViewProfileComponent } from './components/profile/view-profile/view-profile.component';
-import { EditProfileComponent } from './components/profile/edit-profile/edit-profile.component';
-import { EditPasswordComponent } from './components/profile/edit-password/edit-password.component';
 
+/**
+ * Usamos LazyLoad para evitar que se carge todos los componentes en un solo load
+ */
 const routes: Routes = [
-
-  { path: 'home', component: HomeComponent, canActivate:[AuthGuardService] },
-  { path: 'register', component: RegisterComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'add-client', component: AddClientComponent, canActivate:[AuthGuardService] },
-  { path: 'list-clients', component: ListClientComponent, canActivate:[AuthGuardService] },
-  { path: 'edit-client/:id', component: EditClientComponent, canActivate:[AuthGuardService] },
-  // Students
-  { path: 'list-students', component: ListStudentsComponent, canActivate:[AuthGuardService] },
-  { path: 'view-notes/:studentId', component: ViewNotesComponent, canActivate:[AuthGuardService] },
-  // Enrollments
-  { path: 'create-enrollment', component: EnrollmentsCreateComponent, canActivate:[AuthGuardService] },
-
-  // Courses
-  { path: 'create-courses', component: CreateCoursesComponent, canActivate:[AuthGuardService] },
-  // Profile
-  { 
-    path: 'profile',
-    component: ViewProfileComponent,
-    canActivate:[AuthGuardService],
-    children: [
-      { path: 'edit-profile', component: EditProfileComponent },
-      { path: 'edit-password', component: EditPasswordComponent },
-    ],
-  },
-  
+  { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
+  /** Cuando ingresamos a la página aunth, se cargan todas las rutas de aunth-routing */
+  { path: 'aunth', loadChildren: () => import('./aunth/aunth.module').then(m => m.AunthModule) },
+  /** Ruta por defecto */
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent},
-
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
@@ -58,4 +25,5 @@ const routes: Routes = [
     RouterModule
   ]
 })
+
 export class AppRoutingModule { }

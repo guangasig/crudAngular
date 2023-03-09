@@ -7,20 +7,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements DoCheck  {
-  
+export class AppComponent  {
   title = 'My School';
-  ismenurequired = false;
-  constructor( private router: Router) { }
-
-  ngDoCheck(): void {
-    let currecturl = this.router.url;
-    if(currecturl=='/login' || currecturl=='/register' ) {
-      this.ismenurequired = false;
-    }else {
-      this.ismenurequired = true;
-    }
-  }
-
-  collapsed:boolean=false
 }
